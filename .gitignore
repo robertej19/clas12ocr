@@ -1,5 +1,5 @@
 *.db
 *.pyc
 mrclean.sh
-tester.sh
+#tester.sh
 *.txt

@@ -54,12 +54,16 @@ echo
 # saving date for bookmarking purposes:
 set gemcDate = `date`
 
-# copying the gcard to gemc.gcard
-cp /jlab/clas12Tags/$CLAS12TAG/config/rga_fall2018".gcard" gemc.gcard
+# copying the gcard to <conf>.gcard
+cp /jlab/clas12Tags/$CLAS12TAG"/config/"rga_fall2018".gcard" rga_fall2018.gcard
 
 echo
 echo GEMC executable: `which gemc`
-gemc -USE_GUI=0 -OUTPUT="evio, gemc.evio" -N=100  -INPUT_GEN_FILE="lund, clasdis.dat"  gemc.gcard
+
+echo "Directory Content before GEMC"
+ls -l
+
+gemc -USE_GUI=0 -OUTPUT="evio, gemc.evio" -N=100  -INPUT_GEN_FILE="lund, clasdis.dat"  rga_fall2018.gcard
 echo
 printf "GEMC Completed on: "; /bin/date
 echo
@@ -78,13 +82,12 @@ echo
 # saving date for bookmarking purposes:
 set evio2hipoDate = `date`
 
-
 echo
-printf "Running evio2hipo with torus current scale:  $torusField and solenoid current scale: $solenField"
+printf "Running evio2hipo with torus current scale: -1.00 and solenoid current scale: -1.00"
 echo
 echo
-echo executing: evio2hipo -r 11 -t -1 -s -1 -i gemc.evio -o gemc.hipo
-evio2hipo -r 11 -t -1 -s -1 -i gemc.evio -o gemc.hipo
+echo executing: evio2hipo -r 11 -t -1.00 -s -1.00 -i gemc.evio -o gemc.hipo
+evio2hipo -r 11 -t -1.00 -s -1.00 -i gemc.evio -o gemc.hipo
 echo
 printf "evio2hipo Completed on: "; /bin/date
 echo
@@ -97,17 +100,42 @@ echo
 
 
 
+# Run background merging
+# ----------------------
+
+echo "Directory Content Before Background Merging:"
+ls -l
+
+bgMerginFilename.sh rga_fall2018 tor-1.00_sol-1.00 45nA_10604MeV get
+
+set bgFile = `ls 0*.hipo`
+
+echo xrootd file to load: $bgFile
+
+bg-merger -b $bgFile -i gemc.hipo -o gemc.merged.hipo -d "DC,FTOF,HTCC,ECAL"
+
+echo "Directory Content After Background Merging:"
+ls -l
+
+# End ofbackground merging
+# ------------------------
+
+
+
 # Run Reconstruction
 # ------------------
 
 # saving date for bookmarking purposes:
 set reconstructionDate = `date`
 
+# copying the yaml file to recon.yaml
+cp /jlab/clas12Tags/$CLAS12TAG"/config/"rga_fall2018.yaml rga_fall2018.yaml
+
 set configuration = `echo YAML file: rga_fall2018.yaml`
 echo
 echo
-echo executing: recon-util -y rga_fall2018.yaml -i gemc.hipo -o recon.hipo
-recon-util -y rga_fall2018.yaml -i gemc.hipo -o recon.hipo
+echo executing: recon-util -y rga_fall2018.yaml -i gemc.merged.hipo -o recon.hipo
+recon-util -y rga_fall2018.yaml -i gemc.merged.hipo -o recon.hipo
 echo
 printf "recon-util Completed on: "; /bin/date
 echo
