@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CLAS12 Monte-Carlo Job Submission Portal</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="main.css"/>
+	</head>
+
+	<body onload="configurationSelected(); fieldSelected(); bkmergingSelected()">
+		<header class="w3-panel w3-container" id="myHeader">
+			<ul id="nav">
+				<li><a href="index.php">     Home</a></li>
+				<li><a href="about.html">    About</a></li>
+				<li><a href="disk.php">      Disk Usage</a></li>
+				<li><a href="osgStats.html"> OSG Stats</a></li>
+			</ul>
+
+			<div class="w3-center">
+				<h1 id="title" class="w3-xlarge w3-opacity"></h1>
+				<h2 class="w3-xlarge" style="text-align:center">Logged in as <img width = "160" src="username.php"/></h2>
+				<br/><br/>
+			</div>
+		</header>
+
+		<div class="w3-center">
+
+			<form action="submit_type1.php" method="POST">
+				<table id = "submission_table" style="text-align: center;width: 50%;" align="center">
+					<tr>
+						<td> <div class="tooltip">Configuration <span class="tooltiptext">Choose one of the gcards in the container</span></div> </td>
+						<td>
+							<select name="configuration" id="configuration" required onchange="fieldSelected(); bkmergingSelected();">
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><div class="tooltip">Magnetic Fields <span class="tooltiptext">Choose one of the fields setup for corresponding gcards, select gcards first.</span></div></td>
+						<td>
+							<select name="fields" id ="fields" required onchange="bkmergingSelected()">
+							</select>
+						</td>
+					<tr>
+						<td> <div class="tooltip">Generator <span class="tooltiptext">Choose one of the generators in the container</span></div> </td>
+						<td>
+							<select name="generator" id="generator" required onchange="genSelected(this)">
+								<option selected hidden value=""></option>
+								<option value="gemc">              gemc</option>
+								<option value="clasdis">           clasdis</option>
+								<!--								<option value="claspyth">          claspyth (not guaranteed to work)</option>-->
+								<option value="dvcsgen">           dvcsgen</option>
+								<option value="genKYandOnePion">   genKYandOnePion</option>
+								<!--								<option value="inclusive-dis-rad"> inclusive-dis-rad (not guaranteed to work)</option>-->
+								<!--								<option value="tcsgen">            tcsgen (not guaranteed to work)</option>-->
+								<!--								<option value="jpsigen">           jpsigen (not guaranteed to work)</option>-->
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td> <div class="tooltip">Generator Options<span class="tooltiptext">
+							Once a generator is selected, click on the right link to open a new window with the selected generator documentation</span></div> </td>
+						<td> <input type="" name="genOptions"/></td>
+						<td>
+							<div id="generatorLink" >
+								<a href="#" target="_blank">  </a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan = "2"> After selecting the generator, check the documentation and paste the needed options above.<br>
+							Notice: do no use the following options as they are automatically passed for you: --docker, output file name --trig options. </td>
+					</tr>
+					<tr>
+						<td>Number of Events / Job</td>
+						<td><input type="number" name="nevents" id='box2' oninput="calculate();" min="1" max="10000" required></td>
+					</tr>
+					<tr>
+						<td>Number of Jobs</td>
+						<td><input type="number" name="jobs" id='box1' oninput="calculate();" min="0" required></td>
+					</tr>
+					<tr>
+						<td> Total Number of Events </td>
+						<td><input type="number" name="totalevents" id="result"  readonly /> M</td>
+					</tr>
+					<tr>
+						<td> <div class="tooltip">Background Merging <span class="tooltiptext">Choose values to merge background from random trigger. Select magentic fields at second row first! No merging is selected by default.</span></div> </td>
+						<td>
+							<select name="bkmerging" id="bkmerging" required>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td> Output Options </td>
+						<td>
+							<div style="text-align: left; display: inline-block;">
+								<input type="checkbox" name="dstOUT" checked/> dst<br><hr>
+								<p style="text-align: left; font-weight: normal;">
+								Warning: any of the choices below will enlarge the overall output size significantly.<br>
+								</p>
+								<input type="checkbox" name="generatorOUT"      id="generatorOUT" onchange="max_events(this);"> generator<br></input>
+								<input type="checkbox" name="gemcEvioOUT"       id="gemcEvioOUT" onchange="max_events(this);"> gemc<br></input>
+								<input type="checkbox" name="gemcHipoOUT"       id="gemcHipoOUT" onchange="max_events(this);"> gemc decoded<br></input>
+								<input type="checkbox" name="reconstructionOUT" id="reconstructionOUT" onchange="max_events(this);"> reconstruction<br></input>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style='border-left-color:white;border-bottom-color:white;'></td>
+						<td><input type="submit" value="Submit"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+
+	<script src="main.js"></script>		<!-- Don't move this line to the top! It causes an error at Safari -->
+
+</html>

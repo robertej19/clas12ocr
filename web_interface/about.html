@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CLAS12 Monte-Carlo Job Submission Portal</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="main.css"/>
+	</head>
+	
+	<body>
+		<header class="w3-panel w3-container" id="myHeader">
+			<ul id="nav">
+				<li><a href="index.php">     Home</a></li>
+				<li><a href="about.html">    About</a></li>
+				<li><a href="disk.php">      Disk Usage</a></li>
+				<li><a href="osgStats.html"> OSG Stats</a></li>
+			</ul>
+
+			<div class="w3-center">
+				<h1 class="w3-xlarge w3-opacity">CLAS12 Monte-Carlo Job Submission Portal</h1>
+				<h2 class="w3-xlarge" style="text-align:right">Logged in as <img width = "160" src="username.php"/></h2>
+				<br/><br/>
+			</div>
+		</header>
+		<br/><br/>
+
+
+		<div class="w3-row-padding w3-rest" id="contact">
+
+			<h1> Configurations </h1>
+			<p style="margin-left: 40px">
+			The available CLAS12 configurations correspond to the approved experiments:<br/>
+			<li style="margin-left: 60px"> <b>rga_spring2018</b>: RGA spring 2018 configuration  </li>
+			<li style="margin-left: 60px"> <b>rga_fall2018</b>:   RGA fall 2018 configuration </li>
+			<li style="margin-left: 60px"> <b>rgk_fall2018</b>:   RGK fall 2018 configuration</li>
+			<li style="margin-left: 60px"> <b>rga_spring2019</b>: RGA spring 2019 </li>
+			<li style="margin-left: 60px"> <b>rgb_spring2019</b>: RGB spring 2019  </li><br/>
+			</p>
+
+
+			<br/>
+			<h1> Output </h1>
+			<p style="margin-left: 40px">
+			The output is saved on
+			</p>
+
+			<pre style="font-size: 20px">	/volatile/clas12/osg/"username"/job_ID </pre>
+			<p style="margin-left: 40px">
+			where "<b>username</b>" is your jlab account name and <b>ID</b> is the submission ID.<br/>
+			Individual "subjobs" are organized in subdirs named <b>simu_SJID</b>, where SJID is the subjob id.
+			If you submit 500 jobs, SJID will run from 0 to 499.<br>
+			</p>
+			<br/>
+			<h1> Priority </h1>
+			<p style="margin-left: 40px">
+			We have in place a priority system to ensure that the resources are shared among all submissions.<br/>
+			Analysis groups can submit the <a href="Priority Permission Increase Form.pdf">  Priority Permission Increase Form </a>
+			to increase an account priority.<br/>
+			<p style="margin-left: 40px">
+			<br/>
+			<h1> Versions </h1>
+
+			<p style="margin-left: 40px">
+			The software versions are:
+			</p>
+
+			<li style="margin-left: 50px"> <b>gemc</b>:  4.3.2 </li>
+			<li style="margin-left: 50px"> <b>Coatjava</b>:  6.5.3 </li>
+			<p style="margin-left: 40px">
+			We plan to support these and the upcoming versions.</p>
+			</p>
+
+			<br/>
+
+			<center>
+
+				<table style=" width:50%; text-align:center; border: 0px; border-collapse: collapse;">
+					<tr >
+						<th style="border-collapse:collapse; border: 0px;"></th>
+						<th style="border-collapse:collapse; border: 0px;"> <h2> Contacts and Support </h2>
+						</th>
+						<th style="border-collapse:collapse; border: 0px;"></th>
+					</tr >
+					<tr >
+						<th style="border-collapse:collapse; border: 0px;"> <h3> JLab </h3>  <a href="mailto:ungaro@jlab.org">Maurizo Ungaro</a>
+						</th>
+						<th style="border-collapse:collapse; border: 0px;"> <h3> MIT </h3>
+							<a href="mailto:robertej@mit.edu">Bobby Johnston</a><br/>
+							<a href="mailto:sangbaek@mit.edu">Sangbaek Lee</a><br/>
+							<a href="mailto:moranp@mit.edu">Patrick Moran</a>
+						</th>
+						<th style="border-collapse:collapse; border: 0px;"> <h3> Additional Resources </h3>
+							<a href="https://clas12.discourse.group/c/simulation/9">Discourse</a><br/>
+							<a href="https://clasweb.jlab.org/clas12/clas12SoftwarePage/html/index.html">Simulation Software Distribution</a><br/>
+							<a href="https://github.com/JeffersonLab/clas12-mcgen">CLAS12 Generators Github</a><br/>
+						</th>
+					</tr>
+
+				</table>
+			</center>
+
+
+		</div>
+
+	</body>
+
+	<script src="main.js"></script>		<!-- Don't move this line to the top! It causes an error at Safari -->
+
+</html>
