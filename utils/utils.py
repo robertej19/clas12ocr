@@ -29,12 +29,34 @@ def getPythonVersion():
 #Therefore, if we are using python3, we will just do a hard-coded time conversion, which is not optimal
 pyversion = getPythonVersion()
 if pyversion == 2:
-    import pytz
+  def unixtimeconvert(time,timezone):
+        
+        if timezone == 'eastern':
+            local_tz_shift = 4*3600 #Easter timezone is 4 hours off UTC. This might get messed up around daylight saving times
+        else:
+            print("please specifiy a supported timezone")
 
+        utc = datetime.datetime.utcfromtimestamp(time-local_tz_shift)
+        ## You could use `tzlocal` module to get local timezone on Unix and Win32
+        # from tzlocal import get_localzone # $ pip install tzlocal
+        # # get local timezone
+        # local_tz = get_localzone()
+        #Y You might not want to do this though if servers are running in different timezones
+
+        local_dt = utc.strftime('%m/%d %H:%M')
+
+        return local_dt
+    
+
+
+
+  #The folloiwng is causing issues on subMIT
+  #import pytz
+  """
     def unixtimeconvert(time,timezone):
       utc = datetime.datetime.utcfromtimestamp(time)
       if timezone == 'eastern':
-          local_tz = pytz.timezone('America/New_York')
+          #ocal_tz = pytz.timezone('America/New_York')
       else:
           print("please specifiy a supported timezone")
 
@@ -47,6 +69,7 @@ if pyversion == 2:
       local_dt = utc.replace(tzinfo=pytz.utc).astimezone(local_tz).strftime('%m/%d %H:%M')
 
       return local_dt
+    """
 
 elif pyversion == 3:
 
