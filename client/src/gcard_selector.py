@@ -14,7 +14,7 @@ import sqlite3
 import subprocess
 import sys
 import time
-import numpy as np
+#import numpy as np
 from subprocess import PIPE, Popen
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))+'/../../')
 
