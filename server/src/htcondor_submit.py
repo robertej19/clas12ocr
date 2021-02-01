@@ -30,9 +30,10 @@ def htcondor_submit(args, scard, usub_id, file_extension, params, db_conn, sql):
         condor_exec      = scripts_baseDir + "/server/condor_submit.sh"
     else:
         # Need to add condition here in case path is different for non-jlab
-        scripts_baseDir  = "/group/clas12/SubMit"
-        condor_exec      = scripts_baseDir + "/server/condor_submit.sh"
-
+        #scripts_baseDir  = "/group/clas12/SubMit"
+        #condor_exec      = scripts_baseDir + "/server/condor_submit.sh"
+	scripts_baseDir = "/work/robertej/feb_test/clas12ocr/"
+	condor_exec = scripts_baseDir + "server/condor_submit.sh"
 
 
 
@@ -68,11 +69,10 @@ def htcondor_submit(args, scard, usub_id, file_extension, params, db_conn, sql):
         # don't know how to pass farmsubmissionID (4th argument), passing GcardID for now (it may be the same)
         # error: we really need to pass farmsubmissionID
         print("trying to submit job now")
-        #print([condor_exec, scripts_baseDir, jobOutputDir, params['username'],
-        #                 str(usub_id), url, dbType, dbName])
+        print([condor_exec, scripts_baseDir, jobOutputDir, params['username'],
+                         str(usub_id), url, dbType, dbName])
         #Note: Popen array arguements must only contain strings
-        submission = Popen([condor_exec, scripts_baseDir, jobOutputDir, params['username'],
-                        str(usub_id), url, dbType, dbName, str(htcondor_present)], stdout=PIPE).communicate()[0]
+        submission = Popen([condor_exec, scripts_baseDir, jobOutputDir, params['username'],str(usub_id), url, dbType, dbName, str(htcondor_present)], stdout=PIPE).communicate()[0]
 
 
 

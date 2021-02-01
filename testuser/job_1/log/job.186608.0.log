@@ -1,0 +1,26 @@
+000 (186608.000.000) 02/01 18:51:16 Job submitted from host: <18.4.134.251:9615?addrs=18.4.134.251-9615&noUDP&sock=37515_bf84_3>
+...
+028 (186608.000.000) 02/01 18:51:16 Job ad information event triggered.
+JOB_GLIDEIN_Name = "$$(GLIDEIN_Name:Unknown)"
+JOB_Site = "$$(GLIDEIN_Site:Unknown)"
+JOB_GLIDEIN_Gatekeeper = "$$(GLIDEIN_Gatekeeper:Unknown)"
+JOB_GLIDEIN_Entry_Name = "$$(GLIDEIN_Entry_Name:Unknown)"
+EventTime = "2021-02-01T18:51:16"
+TriggerEventTypeName = "ULOG_SUBMIT"
+SubmitHost = "<18.4.134.251:9615?addrs=18.4.134.251-9615&noUDP&sock=37515_bf84_3>"
+Proc = 0
+Cluster = 186608
+JOB_GLIDEIN_Factory = "$$(GLIDEIN_Factory:Unknown)"
+MyType = "SubmitEvent"
+Subproc = 0
+EventTypeNumber = 28
+JOB_GLIDEIN_Schedd = "$$(GLIDEIN_Schedd:Unknown)"
+JOB_GLIDEIN_ClusterId = "$$(GLIDEIN_ClusterId:Unknown)"
+JOB_GLIDEIN_ProcId = "$$(GLIDEIN_ProcId:Unknown)"
+JOB_GLIDEIN_Site = "$$(GLIDEIN_Site:Unknown)"
+JOB_GLIDEIN_SiteWMS = "$$(GLIDEIN_SiteWMS:Unknown)"
+JOB_GLIDEIN_SiteWMS_Slot = "$$(GLIDEIN_SiteWMS_Slot:Unknown)"
+JOB_GLIDEIN_SiteWMS_JobId = "$$(GLIDEIN_SiteWMS_JobId:Unknown)"
+JOB_GLIDEIN_SiteWMS_Queue = "$$(GLIDEIN_SiteWMS_Queue:Unknown)"
+TriggerEventTypeNumber = 0
+...
