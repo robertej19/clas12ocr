@@ -1,0 +1,8 @@
+In submit_type1 and submit_type2:
+
+- gcards should be named configuration (Done)
+- it should read the file data/xrootd.json for the gcards (Done)
+- Current and Energy should be renamed "Background Merging" (Done)
+- either make the Current and Energy (background merging) update once gcard is selected, or add en empty entry.
+The reason is the Current and Energy choices do not update when a valid choice is done with the field. (Done)
+

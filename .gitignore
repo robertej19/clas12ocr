@@ -2,4 +2,4 @@
 *.pyc
 mrclean.sh
 #tester.sh
-*.txt
+#*.txt
